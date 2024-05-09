@@ -1,12 +1,11 @@
 {
   "name": "content-version-control-system",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "author": "Dmytro Pelovych",
+  "description": "The project as a part of academical qualification work at KMA",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "client:dev": "cd ./client && npm run dev",
+    "server:dev": "cd ./server && npm run start:dev",
+    "start:dev": "concurrently \"npm run client:dev\" \"npm run server:dev\""
+  }
 }
