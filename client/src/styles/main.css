@@ -1,5 +1,6 @@
 @import "reset.css";
-
-@import "theme/colors.css";
+@import "normalize.css";
 
 @import "globals.css";
+
+@import "theme/colors.css";

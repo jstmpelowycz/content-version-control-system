@@ -3,15 +3,15 @@ import { FC } from 'react';
 import { withHead } from '@/decorators/with-head';
 import { withAuthLayout } from '@/decorators/with-auth-layout';
 
-const ProductsPage: FC = () => {
+const StoresPage: FC = () => {
   return (
     <>
-      Products page
+      Stores page
     </>
   );
 };
 
 export default compose(
-  withHead('Products'),
+  withHead('Stores'),
   withAuthLayout,
-)(ProductsPage);
+)(StoresPage);

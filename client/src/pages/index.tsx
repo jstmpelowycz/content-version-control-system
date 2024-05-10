@@ -6,12 +6,12 @@ import { withAuthLayout } from '@/decorators/with-auth-layout';
 const HomePage: FC = () => {
   return (
     <>
-      Hello, world
+      Home page
     </>
   );
 };
 
 export default compose(
   withHead('Home'),
-  withAuthLayout
+  withAuthLayout,
 )(HomePage);
