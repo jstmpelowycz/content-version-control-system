@@ -6,7 +6,7 @@
     "build": "nest build",
     "start:dev": "nest start --watch",
     "start:prod": "node dist/main",
-    "codegen": "npx prisma generate --schema=src/prisma/schema.prisma",
+    "codegen": "npx prisma generate --schema=src/modules/__prisma__/schema.prisma",
     "db:up": "docker-compose up -d",
     "db:down": "docker compose down"
   },
