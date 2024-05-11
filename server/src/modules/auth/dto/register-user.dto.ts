@@ -1,6 +1,6 @@
 import { BaseUserDto } from '@/modules/user/dto/base-user.dto';
 
-export interface CreateUserDto extends BaseUserDto {
+export interface RegisterUserDto extends BaseUserDto {
   fullName: string;
   password: string;
 }

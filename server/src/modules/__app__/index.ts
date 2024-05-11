@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
-import { globalConfig } from '@/config';
 import { APP_CONFIG } from '@/modules/__app__/app.config';
 import { AppModule } from '@/modules/__app__/app.module';
 import { applyMiddleware } from '@/modules/__app__/app.middleware';
+import { globalConfig } from '@/config';
 
 export const init = async (): Promise<void> => {
   try {

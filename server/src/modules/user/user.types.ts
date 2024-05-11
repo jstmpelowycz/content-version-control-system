@@ -1,5 +1,5 @@
 import { User } from '@prisma/client';
 
-export interface UserWithToken extends Omit<User, 'password'> {
+export interface AuthUser extends User {
   token: string;
 }
