@@ -1,9 +1,11 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { init } from '@/modules/__app__';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  await app.listen(3001);
-}
+(async () => {
+  try {
+    await init();
+  } catch (error) {
+    console.error(`Error occurred in entrypoint!`, error);
 
-bootstrap();
+    throw error;
+  }
+})();
