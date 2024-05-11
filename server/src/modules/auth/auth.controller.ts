@@ -1,11 +1,16 @@
 import { Response } from 'express';
-import { Body, Controller, HttpCode, Post, Res, HttpStatus, HttpException } from '@nestjs/common';
+import { Body, Controller, HttpCode, Post, Res, HttpStatus, HttpException, UseInterceptors } from '@nestjs/common';
 import { AuthService } from '@/modules/auth/auth.service';
 import { RegisterUserDto } from '@/modules/auth/dto/register-user.dto';
 import { LoginUserDto } from '@/modules/auth/dto/login-user.dto';
-import { setJwtTokenToCookie } from '@/utils/cookie';
+import { SensitiveDataInterceptor } from '@/interceptors/sensitive-data.interceptor';
+import { CookieInterceptor } from '@/interceptors/cookie.interceptor';
 
 @Controller('auth')
+@UseInterceptors(
+  CookieInterceptor,
+  SensitiveDataInterceptor,
+)
 export class AuthController {
   constructor(private readonly authService: AuthService) {
   }
@@ -16,12 +21,10 @@ export class AuthController {
     try {
       const user = await this.authService.register(dto);
 
-      setJwtTokenToCookie(response, user.token);
-
-      return response.json({ user });
+      return { user };
     } catch (exception) {
       if (exception instanceof HttpException) {
-        return response
+        response
           .status(exception.getStatus())
           .json({ user: null });
       }
@@ -34,12 +37,10 @@ export class AuthController {
     try {
       const user = await this.authService.login(dto);
 
-      setJwtTokenToCookie(response, user.token);
-
-      return response.json({ user });
+      return { user };
     } catch (exception) {
       if (exception instanceof HttpException) {
-        return response
+        response
           .status(exception.getStatus())
           .json({ user: null });
       }
