@@ -8,7 +8,7 @@ export const withHead = (title: string) => {
     return (
       <>
         <Head>
-          <title>{title} | Content VCS </title>
+          <title>{title} | Content VCS</title>
         </Head>
 
         {children}
