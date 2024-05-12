@@ -1,13 +1,12 @@
 import { NestFactory } from '@nestjs/core';
-import { APP_CONFIG } from '@/modules/__app__/app.config';
 import { AppModule } from '@/modules/__app__/app.module';
 import { applyMiddleware } from '@/modules/__app__/app.middleware';
-import { globalConfig } from '@/config';
 import { applyFilters } from '@/modules/__app__/app.filter';
+import { globalConfig } from '@/config';
 
 export const init = async (): Promise<void> => {
   try {
-    const app = await NestFactory.create(AppModule, APP_CONFIG);
+    const app = await NestFactory.create(AppModule);
 
     applyMiddleware(app);
     applyFilters(app);

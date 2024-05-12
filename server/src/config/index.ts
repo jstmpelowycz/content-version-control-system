@@ -6,10 +6,6 @@ config({
   path: path.resolve(__dirname, '../../.env'),
 });
 
-const resolvePort = () => parseInt(process.env.SERVER_PORT);
-
-const resolveHost = () => process.env.SERVER_HOST;
-
 const resolveAuthConfig = (): AuthConfig => ({
   jwt: {
     secret: process.env.TOKEN_SECRET,
@@ -18,7 +14,9 @@ const resolveAuthConfig = (): AuthConfig => ({
 });
 
 export const globalConfig = {
-  port: resolvePort(),
-  host: resolveHost(),
+  hostname: process.env.HOSTNAME,
+  host: process.env.SERVER_HOST,
+  clientOrigin: process.env.CLIENT_ORIGIN,
+  port: parseInt(process.env.SERVER_PORT),
   auth: resolveAuthConfig(),
 } as GlobalConfig;

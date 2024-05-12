@@ -2,8 +2,6 @@ import { Observable } from 'rxjs';
 import { Response } from 'express';
 import { map } from 'rxjs/operators';
 import { Injectable, NestInterceptor, CallHandler, ExecutionContext } from '@nestjs/common';
-import { setJwtTokenToCookie } from '@/utils/cookie';
-
 
 @Injectable()
 export class CookieInterceptor implements NestInterceptor {
@@ -21,7 +19,12 @@ export class CookieInterceptor implements NestInterceptor {
     }
 
     if ('token' in data.user && typeof data.user.token === 'string') {
-      setJwtTokenToCookie(response, data.user.token);
+      response.cookie('jwt', data.user.token, {
+        sameSite: 'none',
+        path: '/',
+        secure: false,
+        httpOnly: true,
+      });
     }
 
     return data;

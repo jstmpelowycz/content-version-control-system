@@ -5,6 +5,8 @@ export interface GlobalConfig extends BaseConfig {
 export interface BaseConfig {
   port: number;
   host: string;
+  hostname: string;
+  clientOrigin: string;
 }
 
 export interface AuthConfig {
