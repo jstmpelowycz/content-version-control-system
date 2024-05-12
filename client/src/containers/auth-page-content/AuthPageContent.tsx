@@ -1,18 +1,20 @@
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import Container from '@mui/material/Container';
 import { Copyright } from '@/widgets/copyright/Copyright';
-import { SignUpForm } from '@/components/sign-up-form';
 
-import * as sx from './SignUpPageContent.styles';
+import * as sx from './AuthPageContent.styles';
 
-export const SignUpPageContent: FC = () => {
+export const AuthPageContent: FC<PropsWithChildren> = (props) => {
+  const { children } = props;
+
   return (
     <Container
       sx={sx.container}
       component="main"
       maxWidth="xs"
     >
-      <SignUpForm />
+      {children}
+
       <Copyright />
     </Container>
   );

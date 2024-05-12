@@ -1,10 +1,15 @@
 import compose from 'compose-function';
 import React, { FC } from 'react';
 import { withHead } from '@/decorators/with-head';
-import { SignUpPageContent } from '@/containers/sign-up-page-content';
+import { AuthPageContent } from '@/containers/auth-page-content';
+import { SignUpForm } from '@/components/sign-up-form';
 
 const SignUpPage: FC = () => {
-  return <SignUpPageContent />;
+  return (
+    <AuthPageContent>
+      <SignUpForm />
+    </AuthPageContent>
+  );
 };
 
 export default compose(withHead('Sign up'))(SignUpPage);

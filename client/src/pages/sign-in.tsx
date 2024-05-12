@@ -1,12 +1,14 @@
 import compose from 'compose-function';
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { withHead } from '@/decorators/with-head';
+import { AuthPageContent } from '@/containers/auth-page-content';
+import { SignInForm } from '@/components/sign-in-form';
 
 const SignInPage: FC = () => {
   return (
-    <>
-      Sign-in page
-    </>
+    <AuthPageContent>
+      <SignInForm />
+    </AuthPageContent>
   );
 };
 
