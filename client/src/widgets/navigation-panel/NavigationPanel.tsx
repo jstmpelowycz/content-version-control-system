@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Toolbar, Divider, Drawer } from '@mui/material';
+import { Drawer } from '@mui/material';
 import { NavigationList } from '@/widgets/navigation-panel/navigation-list';
 
 import * as sx from './NavigationPanel.styles';
@@ -11,8 +11,6 @@ export const NavigationPanel: FC = () => {
       variant="permanent"
       anchor="left"
     >
-      <Toolbar />
-      <Divider />
       <NavigationList />
     </Drawer>
   );
