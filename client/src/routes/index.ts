@@ -6,4 +6,14 @@ export const ROUTES = {
   stores: '/stores/',
 };
 
+export const AUTH_ROUTES = [
+  ROUTES.signUp,
+  ROUTES.signIn,
+];
+
+export const PROTECTED_ROUTES = Object.values(ROUTES).filter((route) => (
+  route !== ROUTES.signUp
+  && route !== ROUTES.signIn
+));
+
 export type Route = (typeof ROUTES)[keyof typeof ROUTES];

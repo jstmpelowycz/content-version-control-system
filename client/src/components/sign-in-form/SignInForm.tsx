@@ -23,7 +23,7 @@ export const SignInForm: FC = () => {
       </Avatar>
 
       <Typography component="h1" variant="h5">
-        Sign up
+        Sign In
       </Typography>
 
       <Box
