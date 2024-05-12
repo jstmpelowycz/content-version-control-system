@@ -3,12 +3,14 @@ import { APP_CONFIG } from '@/modules/__app__/app.config';
 import { AppModule } from '@/modules/__app__/app.module';
 import { applyMiddleware } from '@/modules/__app__/app.middleware';
 import { globalConfig } from '@/config';
+import { applyFilters } from '@/modules/__app__/app.filter';
 
 export const init = async (): Promise<void> => {
   try {
     const app = await NestFactory.create(AppModule, APP_CONFIG);
 
     applyMiddleware(app);
+    applyFilters(app);
 
     await app.listen(globalConfig.port, globalConfig.host);
 

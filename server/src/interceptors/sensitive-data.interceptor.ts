@@ -1,17 +1,14 @@
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Injectable, NestInterceptor, CallHandler, ExecutionContext } from '@nestjs/common';
+import { Injectable, NestInterceptor, CallHandler } from '@nestjs/common';
 
 
 @Injectable()
 export class SensitiveDataInterceptor implements NestInterceptor {
-  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    const response = context.switchToHttp().getResponse();
-
+  intercept(_: any, next: CallHandler): Observable<any> {
     return next.handle().pipe(
-      map(data => this.removeToken(data)),
-      map(data => this.removePassword(data)),
-      map(data => response.send(data)),
+      map(this.removeToken),
+      map(this.removePassword),
     );
   }
 
